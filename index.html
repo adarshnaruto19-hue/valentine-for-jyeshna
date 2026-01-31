@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jyeshna... 5 more minutes? 💤</title>
+  <title>Jyeshna... wake up for like 2 seconds? 💤</title>
   <style>
     body {
       margin: 0;
@@ -37,7 +37,7 @@
     h1 {
       font-size: clamp(2.2rem, 6vw, 3.4rem);
       line-height: 1.15;
-      margin: 0 0 25px;
+      margin: 0 0 20px;
       font-weight: 600;
       color: #5c3f7e;
       text-shadow: 0 2px 8px rgba(92,63,126,0.12);
@@ -49,9 +49,23 @@
     }
     .subtext {
       font-size: clamp(1.3rem, 4.5vw, 1.8rem);
-      margin: 0 0 35px;
+      margin: 0 0 30px;
       color: #6b7280;
       line-height: 1.4;
+    }
+    .gifs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .gif {
+      max-width: 180px;
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      opacity: 0.92;
     }
     .buttons {
       display: flex;
@@ -67,10 +81,9 @@
       border-radius: 999px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
       box-shadow: 0 6px 0 rgba(0,0,0,0.12);
       position: relative;
-      overflow: hidden;
     }
     button:active {
       transform: translateY(3px);
@@ -88,7 +101,6 @@
     .no {
       background: #d1d5db;
       color: #374151;
-      box-shadow: 0 6px 0 rgba(0,0,0,0.1);
     }
     .no:hover {
       background: #c7cdd5;
@@ -113,15 +125,6 @@
       0%, 100% { transform: scale(1); }
       50%      { transform: scale(1.12); }
     }
-    img.sleepy {
-      max-width: 180px;
-      height: auto;
-      margin: 20px auto;
-      display: block;
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      opacity: 0.92;
-    }
   </style>
 </head>
 <body>
@@ -129,39 +132,55 @@
 <div class="container">
   <div class="snooze-emoji">💤🥱</div>
 
-  <img class="sleepy" src="https://thumbs.dreamstime.com/b/cute-cat-cartoon-sleeping-pillow-illustration-34612749.jpg" alt="sleepy orange cat">
-  <img class="sleepy" src="https://thumbs.dreamstime.com/b/cute-sloths-quotes-sleeping-sloth-branch-cute-baby-animals-cute-sloths-quotes-sleeping-sloth-branch-cute-baby-186063032.jpg" alt="lazy cute sloth">
+  <div class="gifs">
+    <img class="gif" src="https://cdn.dribbble.com/userupload/42308199/file/original-d00c381e71565143a1431b593a0028ba.gif" alt="sleepy cat curling up">
+    <img class="gif" src="https://i.pinimg.com/originals/0f/05/b5/0f05b5012205fe483d04bc58d9736bc4.gif" alt="fluffy cat napping on windowsill">
+    <img class="gif" src="https://cdn.dribbble.com/userupload/21191643/file/original-d8ff93113a89f573fbaeeed42cbacf46.gif" alt="orange cat yawning sleepy">
+    <img class="gif" src="https://art.pixilart.com/5776f5a4e5a97bc.gif" alt="pixel cat sleeping with Zzz">
+  </div>
 
   <h1>Hey Jyeshna...</h1>
-  <p class="subtext">be my Valentine?<br>you can stay in bed the whole day,<br>I’ll just guard your blanket and bring snacks 💕</p>
+  <p class="subtext">be my Valentine?<br>you can sleep all day,<br>I’ll just protect your blanket and deliver snacks straight to bed 💕</p>
 
   <div class="hearts">💗 💤 💗</div>
 
   <div class="buttons">
     <button class="yes"
-      onclick="alert('Yay sleepy queen said yes~ 🥰 Now official nap buddy privileges unlocked'); 
-               document.body.innerHTML = '<div style=\"font-size: clamp(3rem,10vw,6rem); margin:30vh auto 0; text-align:center; color:#5c3f7e;\">Jyeshna + me = ultimate nap team 💤💕</div>';">
-      Yes (naps included, obviously)
+      onclick="alert('Yay! Sleepy queen said yes~ 🥰 Official nap guardian status: unlocked'); 
+               document.body.innerHTML = '<div style=\"font-size: clamp(3rem,10vw,6rem); margin:30vh auto 0; text-align:center; color:#5c3f7e;\">Jyeshna + me = pro nap squad 💤💕</div>';">
+      Yes (naps mandatory)
     </button>
 
     <button class="no" id="lazyNo"
-      onmouseover="this.style.transform='translate('+(Math.random()*40-20)+'px, '+(Math.random()*30-15)+'px)';">
-      too sleepy to commit rn
+      onmouseover="this.style.transform='translate('+(Math.random()*120-60)+'px, '+(Math.random()*80-40)+'px)'; this.style.transition='transform 0.2s';">
+      too sleepy... no energy for this
     </button>
   </div>
 
-  <p class="tiny-love-note">(I’ll even hit snooze for you... just don’t make me eat the chocolate alone pls 🥺)</p>
+  <p class="tiny-love-note">(I’ll set 15 alarms just so you can ignore them all... but pls say yes before you doze off again 🥺)</p>
 </div>
 
 <script>
-  // super lazy no button drifts slowly
-  setInterval(() => {
-    const no = document.getElementById('lazyNo');
-    if (!no) return;
-    let dx = (Math.random() - 0.5) * 12;
-    let dy = (Math.random() - 0.5) * 8;
-    no.style.transform = `translate(${dx}px, ${dy}px)`;
-  }, 2200);
+  // Make "No" escape SUPER fast and erratic
+  const noBtn = document.getElementById('lazyNo');
+  let intervalId;
+
+  noBtn.addEventListener('mouseover', () => {
+    noBtn.style.transition = 'transform 0.15s ease-out';
+    noBtn.style.transform = `translate(${Math.random()*200-100}px, ${Math.random()*140-70}px)`;
+  });
+
+  // Constant fast drifting even without hover
+  intervalId = setInterval(() => {
+    if (!noBtn) {
+      clearInterval(intervalId);
+      return;
+    }
+    const dx = (Math.random() - 0.5) * 80;
+    const dy = (Math.random() - 0.5) * 60;
+    noBtn.style.transition = 'transform 0.4s ease';
+    noBtn.style.transform = `translate(${dx}px, ${dy}px)`;
+  }, 800); // faster drift interval
 </script>
 
 </body>
