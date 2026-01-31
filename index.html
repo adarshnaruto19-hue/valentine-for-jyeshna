@@ -1,294 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine? 💕</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .container {
-            text-align: center;
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        h1 {
-            color: #e91e63;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        .question {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 2rem;
-        }
-
-        .gif-container {
-            margin: 2rem 0;
-        }
-
-        .gif-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 15px;
-        }
-
-        .button-container {
-            position: relative;
-            height: 80px;
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        button {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-        }
-
-        #yesBtn {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            z-index: 5;
-        }
-
-        #yesBtn:hover {
-            transform: scale(1.1);
-        }
-
-        #noBtn {
-            background: linear-gradient(135deg, #a8a8a8 0%, #7f7f7f 100%);
-            color: white;
-            position: absolute;
-            pointer-events: none;           /* prevents normal hover/click */
-            transition: left 0.25s ease-out, top 0.25s ease-out;
-            white-space: nowrap;
-        }
-
-        .celebration {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        .celebration h2 {
-            color: #e91e63;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .celebration p {
-            font-size: 1.2rem;
-            color: #666;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 999;
-        }
-
-        .heart {
-            position: absolute;
-            font-size: 2rem;
-            animation: fall 4s linear;
-            opacity: 0;
-        }
-
-        @keyframes fall {
-            0% {
-                opacity: 1;
-                top: -10%;
-            }
-            100% {
-                opacity: 0;
-                top: 110%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>valentine.exe has stopped working</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #0f0f23;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      overflow: hidden;
+      color: #ff00aa;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="24" font-size="28">💀</text></svg>'), auto;
+    }
+    .container {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+    }
+    h1 {
+      font-size: 9vw;
+      text-shadow: 0 0 40px #ff00ff, 0 0 80px #00ffff;
+      animation: glitch 1.2s infinite;
+      user-select: none;
+    }
+    .btn-area {
+      margin-top: 60px;
+    }
+    .yes-btn {
+      font-size: 6vw;
+      padding: 30px 80px;
+      background: #ff0044;
+      color: white;
+      border: 8px solid #00ffea;
+      border-radius: 0;
+      box-shadow: 0 0 0 12px #000;
+      transform: rotate(-4deg);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .yes-btn:hover {
+      transform: rotate(4deg) scale(1.3);
+      background: #00ff00;
+      border-color: #ffff00;
+      box-shadow: 0 0 60px #00ff00;
+    }
+    .no-btn {
+      position: absolute;
+      font-size: 4vw;
+      padding: 20px 50px;
+      background: #444;
+      color: #888;
+      border: 5px solid #222;
+      pointer-events: none;
+      opacity: 0.4;
+      user-select: none;
+    }
+    @keyframes glitch {
+      0%   { transform: translate(0); }
+      20%  { transform: translate(-4px, 4px); }
+      40%  { transform: translate(4px, -4px); }
+      60%  { transform: translate(-4px, 0); }
+      80%  { transform: translate(4px, 0); }
+      100% { transform: translate(0); }
+    }
+    .matrix {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.15;
+      font-family: monospace;
+      color: #0f0;
+      white-space: pre;
+      font-size: 14px;
+      line-height: 1;
+      animation: matrix-fall 20s linear infinite;
+    }
+    @keyframes matrix-fall {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+  </style>
 </head>
 <body>
-    <div class="hearts" id="hearts"></div>
+
+<div class="matrix">
+01010100 01101000 01100101 01110010 01100101 00100000 01101001 01110011
+00100000 01101110 01101111 00100000  escape 00100000 01100110 01110010 01101111 01101101
+00100000 01110100 01101000 01100101 00100000 01110110 01100001 01101100 01100101 01101110 01110100 01101001 01101110 01100101
+00100000 01110011 01101001 01101101 01110101 01101100 01100001 01110100 01101001 01101111 01101110
+</div>
+
+<div class="container">
+  <h1>WILL YOU BE<br>MY VALENTINE<br>OR ELSE</h1>
+  
+  <div class="btn-area">
+    <button class="yes-btn" 
+      onclick="alert('too late. you clicked. contract signed in blood. no refunds. 💀'); 
+               document.body.innerHTML = '<h1 style=\'font-size:20vw;color:#f00;text-align:center;margin-top:30vh;\'>YOU SAID YES</h1><h2 style=\'color:#0f0;text-align:center;\'>no takebacks lol</h2>';">
+      YES (only correct answer)
+    </button>
+  </div>
+</div>
+
+<script>
+  // The "No" button runs away forever
+  document.addEventListener('mousemove', (e) => {
+    const noBtn = document.querySelector('.no-btn');
+    if (!noBtn) return;
     
-    <div class="container">
-        <div id="question-section">
-            <h1>💕 Hey Beautifulll! 💕</h1>
-            <p class="question">Will you be my Valentine?</p>
-            
-            <div class="gif-container">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHEzZzBnN2Q2Y3FqY3F5dGJkdDJ6M3JnZmE2dGJjdHN6ZGNxYzR6ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="Cute puppy">
-            </div>
-            
-            <div class="button-container">
-                <button id="yesBtn">Yes! 💖</button>
-                <button id="noBtn">No 😭</button>
-            </div>
-        </div>
+    const rect = noBtn.getBoundingClientRect();
+    const distanceX = e.clientX - (rect.left + rect.width/2);
+    const distanceY = e.clientY - (rect.top + rect.height/2);
+    const distance = Math.sqrt(distanceX**2 + distanceY**2);
+    
+    if (distance < 180) {
+      noBtn.style.left = (e.clientX + (Math.random()-0.5)*400) + 'px';
+      noBtn.style.top  = (e.clientY + (Math.random()-0.5)*300) + 'px';
+    }
+  });
 
-        <div class="celebration" id="celebration">
-            <h2>🎉 Yaaaay! 🎉</h2>
-            <p>I knew you'd say yes! ❤️</p>
-            <p style="margin-top: 1rem;">You just made me the happiest person ever! 💕</p>
-            <div class="gif-container">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGJxMTRvY2Z0ajhxMWMyaDNjOHlhbWZsbWhud3o2aWF6OGhpNmxuZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UVk5yzljef0kGiayL1/giphy.gif" alt="Celebration">
-            </div>
-        </div>
-    </div>
+  // spawn fake "No" buttons that run away
+  setTimeout(() => {
+    const no = document.createElement('button');
+    no.className = 'no-btn';
+    no.textContent = 'NO (you wish)';
+    no.style.left = Math.random()*90 + 5 + 'vw';
+    no.style.top  = Math.random()*80 + 10 + 'vh';
+    document.body.appendChild(no);
+  }, 800);
+</script>
 
-    <script>
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        const questionSection = document.getElementById('question-section');
-        const celebration = document.getElementById('celebration');
-        const container = document.querySelector('.container');
-
-        let isCaught = false;
-
-        // Keep No button inside the white card
-        function clampPosition(x, y) {
-            const contRect = container.getBoundingClientRect();
-            const btnRect = noBtn.getBoundingClientRect();
-            const padding = 30;
-
-            const minX = padding;
-            const maxX = contRect.width - btnRect.width - padding;
-            const minY = padding;
-            const maxY = contRect.height - btnRect.height - padding;
-
-            return {
-                x: Math.max(minX, Math.min(maxX, x)),
-                y: Math.max(minY, Math.min(maxY, y))
-            };
-        }
-
-        // Escape logic: moves AWAY from cursor
-        function evade(e) {
-            if (isCaught) return;
-
-            const btnRect = noBtn.getBoundingClientRect();
-            const centerX = btnRect.left + btnRect.width / 2;
-            const centerY = btnRect.top + btnRect.height / 2;
-
-            const mouseX = e.clientX || (e.touches && e.touches[0]?.clientX) || 0;
-            const mouseY = e.clientY || (e.touches && e.touches[0]?.clientY) || 0;
-
-            if (mouseX === 0 && mouseY === 0) return;
-
-            const distance = Math.hypot(mouseX - centerX, mouseY - centerY);
-
-            if (distance < 110) {
-                const angle = Math.atan2(mouseY - centerY, mouseX - centerX);
-                const jump = 60 + Math.random() * 50;
-
-                let newX = (centerX - container.getBoundingClientRect().left) + Math.cos(angle + Math.PI) * jump;
-                let newY = (centerY - container.getBoundingClientRect().top) + Math.sin(angle + Math.PI) * jump;
-
-                const clamped = clampPosition(newX - btnRect.width / 2, newY - btnRect.height / 2);
-
-                noBtn.style.left = clamped.x + 'px';
-                noBtn.style.top = clamped.y + 'px';
-
-                // Tiny funny surrender chance
-                if (Math.random() < 0.004) {
-                    isCaught = true;
-                    noBtn.textContent = "Okay fine... 😭";
-                    noBtn.style.background = 'linear-gradient(135deg, #ff6b6b, #ff8e53)';
-                }
-            }
-        }
-
-        // Listen for mouse & touch movement
-        document.addEventListener('mousemove', evade);
-        document.addEventListener('touchmove', evade, { passive: true });
-
-        // Position No next to Yes on load
-        window.addEventListener('load', () => {
-            const yesRect = yesBtn.getBoundingClientRect();
-            const contRect = container.getBoundingClientRect();
-
-            let startX = (yesRect.left - contRect.left) + yesRect.width + 30 + Math.random() * 30;
-            let startY = (yesRect.top - contRect.top) + (yesRect.height - noBtn.offsetHeight) / 2;
-
-            const pos = clampPosition(startX, startY);
-            noBtn.style.left = pos.x + 'px';
-            noBtn.style.top = pos.y + 'px';
-        });
-
-        // Safety click handler
-        noBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert("Hey! That's cheating 😤\nBe my Valentine pleeease? 🥺💕");
-        });
-
-        // Yes celebration
-        yesBtn.addEventListener('click', () => {
-            questionSection.style.display = 'none';
-            celebration.style.display = 'block';
-            createHearts();
-        });
-
-        // Falling hearts
-        function createHearts() {
-            const heartsContainer = document.getElementById('hearts');
-            const heartSymbols = ['❤️', '💕', '💖', '💗', '💝', '💘'];
-            
-            for (let i = 0; i < 30; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'heart';
-                    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-                    heartsContainer.appendChild(heart);
-                    
-                    setTimeout(() => heart.remove(), 5000);
-                }, i * 200);
-            }
-        }
-    </script>
 </body>
 </html>
