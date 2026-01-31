@@ -19,20 +19,20 @@
 
     .card {
       text-align: center;
-      padding: 45px 35px;
+      padding: 50px 40px;
       max-width: 90%;
-      width: 540px;
+      width: 580px;
       background: rgba(255, 255, 255, 0.97);
-      border-radius: 36px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.2);
-      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      box-shadow: 0 35px 90px rgba(0,0,0,0.22);
+      backdrop-filter: blur(14px);
       position: relative;
       overflow: hidden;
       animation: float 8s ease-in-out infinite;
     }
 
     h1 {
-      font-size: 4rem;
+      font-size: 4.2rem;
       margin: 0.2em 0 0.5em;
       color: #e74c3c;
     }
@@ -43,40 +43,43 @@
     }
 
     .intro {
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       line-height: 1.6;
       margin: 0.8em 0 1.8em;
       color: #444;
     }
 
     .question {
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: 600;
-      margin: 2rem 0 2.5rem;
+      margin: 2.2rem 0 2.8rem;
       color: #222;
     }
 
-    .buttons-zone {
+    .button-area {
       position: relative;
-      min-height: 140px;
-      margin: 1.5rem 0 2.5rem;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem 0 3rem;
     }
 
     button {
       font-weight: bold;
       border: none;
       border-radius: 999px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      box-shadow: 0 6px 22px rgba(0,0,0,0.14);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
       user-select: none;
     }
 
     #yes {
-      font-size: 2.4rem;
-      padding: 22px 100px;
+      font-size: 2.5rem;
+      padding: 24px 110px;
       background: #e74c3c;
       color: white;
+      position: relative;
+      z-index: 5;
     }
 
     #yes:hover {
@@ -85,24 +88,24 @@
     }
 
     #no {
-      font-size: 1.05rem;           /* small */
-      padding: 9px 26px;
-      background: #eeeeee;
+      font-size: 1.1rem;           /* small */
+      padding: 10px 30px;
+      background: #f0f0f0;
       color: #616161;
       position: absolute;
-      pointer-events: none;          /* prevents actual hover state & click */
-      transition: left 0.25s ease-out, top 0.25s ease-out;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      pointer-events: none;         /* no real hover/click possible */
+      transition: left 0.28s ease-out, top 0.28s ease-out;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.14);
       white-space: nowrap;
     }
 
     .success {
-      font-size: 2.5rem;
-      margin-top: 2.2rem;
+      font-size: 2.6rem;
+      margin-top: 2.5rem;
       color: #2e7d32;
       font-weight: bold;
       opacity: 0;
-      transform: translateY(35px);
+      transform: translateY(40px);
       transition: all 1s ease;
     }
 
@@ -120,32 +123,33 @@
 
     .heart {
       position: absolute;
-      font-size: 2rem;
+      font-size: 2.2rem;
       animation: rise linear infinite;
-      opacity: 0.75;
+      opacity: 0.78;
     }
 
     @keyframes rise {
       0%   { transform: translateY(120%) rotate(0deg); }
-      100% { transform: translateY(-40%) rotate(1080deg); }
+      100% { transform: translateY(-50%) rotate(1440deg); }
     }
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.2); }
+      50%      { transform: scale(1.22); }
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-15px); }
+      50%      { transform: translateY(-18px); }
     }
 
-    @media (max-width: 550px) {
-      .card    { padding: 35px 25px; width: 90%; }
-      h1       { font-size: 3.2rem; }
-      #yes     { font-size: 2rem; padding: 18px 80px; }
-      #no      { font-size: 0.95rem; padding: 8px 22px; }
-      .question { font-size: 1.75rem; }
+    @media (max-width: 600px) {
+      .card       { padding: 40px 30px; width: 92%; }
+      h1          { font-size: 3.4rem; }
+      #yes        { font-size: 2.1rem; padding: 20px 80px; }
+      #no         { font-size: 1rem; padding: 9px 26px; }
+      .question   { font-size: 1.8rem; }
+      .button-area { height: 100px; }
     }
   </style>
 </head>
@@ -157,13 +161,13 @@
   <h1>Hey beautiful <span class="heartbeat">❤️</span></h1>
 
   <div class="intro">
-    I've been thinking about this a lot…<br>
-    and honestly, there's only one person I want next to me this Valentine's.
+    I've been thinking about this nonstop…<br>
+    and there's really only one person I want to spend Valentine's with.
   </div>
 
   <div class="question">Will you be my Valentine?</div>
 
-  <div class="buttons-zone">
+  <div class="button-area">
     <button id="yes">Yes!! 💖</button>
     <button id="no">No 😭</button>
   </div>
@@ -180,27 +184,28 @@
     h.className = 'heart';
     h.textContent = ['❤️','💗','💓','💞','💘','💝'][Math.floor(Math.random()*6)];
     h.style.left = Math.random() * 100 + 'vw';
-    h.style.animationDuration = (Math.random() * 9 + 11) + 's';
-    h.style.fontSize = (Math.random() * 1.2 + 1.3) + 'rem';
+    h.style.animationDuration = (Math.random() * 10 + 12) + 's';
+    h.style.fontSize = (Math.random() * 1.4 + 1.4) + 'rem';
     document.getElementById('hearts').appendChild(h);
-    setTimeout(() => h.remove(), 18000);
+    setTimeout(() => h.remove(), 20000);
   }
-  setInterval(spawnHeart, 350);
+  setInterval(spawnHeart, 320);
 
   // Logic
-  const yesBtn = document.getElementById('yes');
-  const noBtn  = document.getElementById('no');
-  const success = document.getElementById('successMsg');
-  const card    = document.querySelector('.card');
+  const yesBtn   = document.getElementById('yes');
+  const noBtn    = document.getElementById('no');
+  const success  = document.getElementById('successMsg');
+  const card     = document.querySelector('.card');
+  const btnArea  = document.querySelector('.button-area');
 
   yesBtn.addEventListener('click', () => {
     success.classList.add('show');
     noBtn.style.display = 'none';
     yesBtn.textContent = 'You said YES! 🥰💕';
-    yesBtn.style.transform = 'scale(1.3)';
+    yesBtn.style.transform = 'scale(1.32)';
     yesBtn.disabled = true;
 
-    for(let i = 0; i < 60; i++) setTimeout(spawnHeart, i * 55);
+    for(let i = 0; i < 70; i++) setTimeout(spawnHeart, i * 50);
   });
 
   let noLocked = false;
@@ -208,15 +213,10 @@
   function clampToCard(x, y) {
     const bounds = card.getBoundingClientRect();
     const noSize = noBtn.getBoundingClientRect();
-    const pad = 35;
-    const minX = pad;
-    const maxX = bounds.width - noSize.width - pad;
-    const minY = pad;
-    const maxY = bounds.height - noSize.height - pad;
-
+    const pad = 40;
     return {
-      x: Math.max(minX, Math.min(maxX, x)),
-      y: Math.max(minY, Math.min(maxY, y))
+      x: Math.max(pad, Math.min(bounds.width - noSize.width - pad, x)),
+      y: Math.max(pad, Math.min(bounds.height - noSize.height - pad, y))
     };
   }
 
@@ -234,9 +234,9 @@
 
     const dist = Math.hypot(mx - cx, my - cy);
 
-    if (dist < 110) {  // larger trigger radius → prevents hover almost completely
+    if (dist < 120) {   // large radius → flees before you can hover
       const angle = Math.atan2(my - cy, mx - cx);
-      const jump = 70 + Math.random() * 70;  // strong jumps
+      const jump = 80 + Math.random() * 80;
 
       let newX = (cx - card.getBoundingClientRect().left) + Math.cos(angle + Math.PI) * jump;
       let newY = (cy - card.getBoundingClientRect().top)  + Math.sin(angle + Math.PI) * jump;
@@ -246,9 +246,9 @@
       noBtn.style.left = pos.x + 'px';
       noBtn.style.top  = pos.y + 'px';
 
-      if (Math.random() < 0.004) {
+      if (Math.random() < 0.003) {
         noLocked = true;
-        noBtn.textContent = "…okay 😭";
+        noBtn.textContent = "Fine... 😭";
         noBtn.style.background = '#ff9800';
         noBtn.style.color = 'white';
       }
@@ -258,21 +258,24 @@
   document.addEventListener('mousemove', evade);
   document.addEventListener('touchmove', evade, { passive: true });
 
-  // Random safe start position
+  // Start right next to Yes
   window.addEventListener('load', () => {
-    const bounds = card.getBoundingClientRect();
+    const yesRect = yesBtn.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
     const noSize = noBtn.getBoundingClientRect();
-    const rx = 80 + Math.random() * (bounds.width - noSize.width - 160);
-    const ry = 120 + Math.random() * (bounds.height - noSize.height - 240);
-    const pos = clampToCard(rx, ry);
+
+    // Position ~30–50px to the right of Yes, centered vertically
+    let startX = (yesRect.left - cardRect.left) + yesRect.width + 30 + Math.random() * 40;
+    let startY = (yesRect.top - cardRect.top) + (yesRect.height - noSize.height) / 2;
+
+    const pos = clampToCard(startX, startY);
     noBtn.style.left = pos.x + 'px';
     noBtn.style.top  = pos.y + 'px';
   });
 
-  // Safety alert if someone forces a click
   noBtn.addEventListener('click', e => {
     e.preventDefault();
-    alert("No cheating allowed! 😭\nPlease be my Valentine? 🥺❤️");
+    alert("Hey! That's not fair 😭\nPlease be my Valentine? 🥺❤️");
   });
 </script>
 </body>
