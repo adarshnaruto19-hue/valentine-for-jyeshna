@@ -26,7 +26,6 @@
       box-shadow: 0 25px 60px rgba(0,0,0,0.18);
       backdrop-filter: blur(10px);
       animation: float 7s ease-in-out infinite;
-      position: relative;
     }
 
     h1 {
@@ -43,18 +42,28 @@
     p {
       font-size: 1.5rem;
       line-height: 1.6;
-      margin: 1em 0 2em;
+      margin: 1em 0 1.8em;
       color: #444;
     }
 
+    .question {
+      font-size: 1.9rem;
+      margin: 2rem 0 2.5rem;
+    }
+
     .buttons {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      height: 140px;               /* fixed height = play area for No button */
+      margin: 0 auto;
       display: flex;
       justify-content: center;
-      gap: 80px;
-      flex-wrap: wrap;
-      position: relative;
-      min-height: 120px;
       align-items: center;
+      border: 2px dashed #ffcccc;
+      border-radius: 16px;
+      background: rgba(255, 240, 240, 0.4);
+      overflow: hidden;
     }
 
     button {
@@ -68,37 +77,38 @@
     }
 
     #yes {
-      font-size: 2.2rem;          /* Much bigger text */
-      padding: 24px 80px;         /* Huge padding → very prominent button */
+      font-size: 2.4rem;
+      padding: 28px 100px;
       background: #e74c3c;
       color: white;
+      position: relative;
+      z-index: 5;
     }
 
     #yes:hover {
       background: #c0392b;
-      transform: scale(1.15);
-      box-shadow: 0 15px 40px rgba(231, 76, 60, 0.4);
+      transform: scale(1.12);
     }
 
     #no {
-      font-size: 1.4rem;
-      padding: 16px 50px;
+      font-size: 1.5rem;
+      padding: 16px 60px;
       background: #ecf0f1;
       color: #7f8c8d;
       position: absolute;
-      pointer-events: auto;
-      transition: all 0.18s ease-out;
+      transition: top 0.4s ease-out, left 0.4s ease-out;
       z-index: 10;
+      pointer-events: auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
-    #no:hover, #no:active {
+    #no:hover {
       background: #bdc3c7;
-      color: #2c3e50;
       transform: scale(1.1);
     }
 
     .message {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       margin-top: 2.5rem;
       color: #27ae60;
       font-weight: bold;
@@ -114,11 +124,9 @@
 
     .floating-hearts {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       pointer-events: none;
       overflow: hidden;
-      top: 0; left: 0;
     }
 
     .heart {
@@ -129,13 +137,13 @@
     }
 
     @keyframes floatUp {
-      0%   { transform: translateY(100vh) rotate(0deg); }
+      0%   { transform: translateY(110vh) rotate(0deg); }
       100% { transform: translateY(-20vh) rotate(720deg); }
     }
 
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.2); }
+      50%      { transform: scale(1.22); }
     }
 
     @keyframes float {
@@ -144,11 +152,11 @@
     }
 
     @media (max-width: 600px) {
-      h1          { font-size: 3.2rem; }
-      #yes        { font-size: 1.9rem; padding: 20px 60px; }
-      #no         { font-size: 1.3rem; padding: 14px 40px; }
-      .buttons    { gap: 50px; }
-      p           { font-size: 1.35rem; }
+      h1       { font-size: 3.4rem; }
+      #yes     { font-size: 2rem;    padding: 22px 70px; }
+      #no      { font-size: 1.35rem; padding: 14px 50px; }
+      .buttons { height: 120px; }
+      .question { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -159,20 +167,17 @@
 <div class="container">
   <h1>Hey beautiful <span class="heart-beat">❤️</span></h1>
   
-  <p>I’ve been thinking about this way too much…<br>
-  and honestly, there’s only one person I want by my side this Valentine’s.</p>
+  <p>I’ve been thinking about this a lot lately…<br>and I really want only one person next to me this Valentine’s.</p>
 
-  <p style="font-size: 1.9rem; margin: 2.2rem 0 2rem;">
-    So…<br><strong>Will you be my Valentine?</strong>
-  </p>
+  <div class="question"><strong>Will you be my Valentine?</strong></div>
 
-  <div class="buttons">
+  <div class="buttons" id="buttonBox">
     <button id="yes">Yes!! 💖</button>
     <button id="no">No 😭</button>
   </div>
 
   <div class="message" id="happyMessage">
-    YAYYYYYY!!! 🎉❤️ I love you so so much!!
+    YAYYYYY!!! 🎉❤️ I love you so much!!
   </div>
 </div>
 
@@ -184,32 +189,46 @@
     heart.innerHTML = ['❤️','💗','💓','💞','💘','💝'][Math.floor(Math.random()*6)];
     heart.style.left = Math.random() * 100 + 'vw';
     heart.style.animationDuration = (Math.random() * 9 + 11) + 's';
-    heart.style.fontSize = (Math.random() * 1.4 + 1.2) + 'rem';
+    heart.style.fontSize = (Math.random() * 1.5 + 1.2) + 'rem';
     document.getElementById('hearts').appendChild(heart);
     setTimeout(() => heart.remove(), 16000);
   }
-  setInterval(createHeart, 350);
+  setInterval(createHeart, 320);
 
   // Logic
   const yesBtn = document.getElementById('yes');
   const noBtn = document.getElementById('no');
   const message = document.getElementById('happyMessage');
+  const box = document.getElementById('buttonBox');
 
   yesBtn.addEventListener('click', () => {
     message.classList.add('show');
     noBtn.style.display = 'none';
     yesBtn.innerHTML = 'You said YES! 🥰💕';
-    yesBtn.style.transform = 'scale(1.35)';
+    yesBtn.style.transform = 'scale(1.3)';
     yesBtn.disabled = true;
 
-    // Heart explosion
     for(let i = 0; i < 50; i++) {
       setTimeout(createHeart, i * 50);
     }
   });
 
-  // Slippery No button – moves OPPOSITE to cursor direction
+  // No button dodges inside the box
   let noLocked = false;
+
+  function keepNoInsideBox(x, y) {
+    const boxRect = box.getBoundingClientRect();
+    const noRect = noBtn.getBoundingClientRect();
+
+    const maxLeft = boxRect.width - noRect.width - 20;
+    const maxTop  = boxRect.height - noRect.height - 20;
+
+    x = Math.max(20, Math.min(maxLeft, x));
+    y = Math.max(20, Math.min(maxTop, y));
+
+    noBtn.style.left = x + 'px';
+    noBtn.style.top  = y + 'px';
+  }
 
   function moveNoButton(e) {
     if (noLocked) return;
@@ -225,25 +244,19 @@
 
     const dist = Math.hypot(mouseX - btnX, mouseY - btnY);
 
-    if (dist < 110) {  // trigger when cursor gets within ~110px
+    if (dist < 90) {  // trigger distance
       const angle = Math.atan2(mouseY - btnY, mouseX - btnX);
-      const escapeDist = 200 + Math.random() * 120;  // bigger jumps for drama
+      const escapeDist = 80 + Math.random() * 60;   // smaller jumps → stays inside box
 
-      let newX = btnX + Math.cos(angle + Math.PI) * escapeDist;  // +π = opposite direction
-      let newY = btnY + Math.sin(angle + Math.PI) * escapeDist;
+      let newX = (btnX - box.getBoundingClientRect().left) + Math.cos(angle + Math.PI) * escapeDist;
+      let newY = (btnY - box.getBoundingClientRect().top)  + Math.sin(angle + Math.PI) * escapeDist;
 
-      // Clamp to screen with safe margin
-      newX = Math.max(100, Math.min(window.innerWidth - 200, newX));
-      newY = Math.max(100, Math.min(window.innerHeight - 200, newY));
+      keepNoInsideBox(newX - rect.width / 2, newY - rect.height / 2);
 
-      noBtn.style.left = (newX - rect.width / 2) + 'px';
-      noBtn.style.top  = (newY - rect.height / 2) + 'px';
-      noBtn.style.position = 'fixed';
-
-      // Very rare "catch" chance
-      if (Math.random() < 0.006) {
+      // Very rare catch
+      if (Math.random() < 0.005) {
         noLocked = true;
-        noBtn.innerHTML = "Okay… you win 😭";
+        noBtn.innerHTML = "…okay 😭";
         noBtn.style.background = '#e67e22';
         noBtn.style.color = 'white';
       }
@@ -253,9 +266,18 @@
   document.addEventListener('mousemove', moveNoButton);
   document.addEventListener('touchmove', moveNoButton, { passive: true });
 
+  // Initial random position inside box
+  setTimeout(() => {
+    const boxRect = box.getBoundingClientRect();
+    const noRect = noBtn.getBoundingClientRect();
+    const randomX = 30 + Math.random() * (boxRect.width - noRect.width - 60);
+    const randomY = 30 + Math.random() * (boxRect.height - noRect.height - 60);
+    keepNoInsideBox(randomX, randomY);
+  }, 300);
+
   noBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    alert("Nooo cheating allowed! 😭\nBut seriously… please be my Valentine? 🥺❤️");
+    alert("Hey! No sneaking clicks 😭\nPleaseeee be my Valentine? 🥺❤️");
   });
 </script>
 </body>
