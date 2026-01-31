@@ -19,88 +19,92 @@
 
     .container {
       text-align: center;
-      padding: 30px 20px;
-      max-width: 90%;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 24px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-      backdrop-filter: blur(8px);
-      animation: float 6s ease-in-out infinite;
+      padding: 40px 25px;
+      max-width: 95%;
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 28px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+      backdrop-filter: blur(10px);
+      animation: float 7s ease-in-out infinite;
       position: relative;
     }
 
     h1 {
-      font-size: 3.8rem;
-      margin: 0.2em 0 0.4em;
+      font-size: 4.2rem;
+      margin: 0.2em 0 0.5em;
       color: #e74c3c;
     }
 
     .heart-beat {
       display: inline-block;
-      animation: heartbeat 1.4s infinite;
+      animation: heartbeat 1.3s infinite;
     }
 
     p {
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       line-height: 1.6;
-      margin: 0.8em 0 1.8em;
+      margin: 1em 0 2em;
       color: #444;
     }
 
     .buttons {
       display: flex;
       justify-content: center;
-      gap: 60px;
+      gap: 80px;
       flex-wrap: wrap;
       position: relative;
-      min-height: 80px;
+      min-height: 120px;
+      align-items: center;
     }
 
     button {
-      font-size: 1.4rem;
-      padding: 16px 48px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
       font-weight: bold;
-      transition: all 0.2s;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       user-select: none;
     }
 
     #yes {
+      font-size: 2.2rem;          /* Much bigger text */
+      padding: 24px 80px;         /* Huge padding → very prominent button */
       background: #e74c3c;
       color: white;
     }
 
     #yes:hover {
       background: #c0392b;
-      transform: scale(1.12);
+      transform: scale(1.15);
+      box-shadow: 0 15px 40px rgba(231, 76, 60, 0.4);
     }
 
     #no {
+      font-size: 1.4rem;
+      padding: 16px 50px;
       background: #ecf0f1;
       color: #7f8c8d;
       position: absolute;
       pointer-events: auto;
-      transition: all 0.15s ease-out;
+      transition: all 0.18s ease-out;
       z-index: 10;
     }
 
     #no:hover, #no:active {
       background: #bdc3c7;
       color: #2c3e50;
-      transform: scale(1.08);
+      transform: scale(1.1);
     }
 
     .message {
-      font-size: 2.2rem;
-      margin-top: 2rem;
+      font-size: 2.4rem;
+      margin-top: 2.5rem;
       color: #27ae60;
       font-weight: bold;
       opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease;
+      transform: translateY(30px);
+      transition: all 0.9s ease;
     }
 
     .message.show {
@@ -119,30 +123,32 @@
 
     .heart {
       position: absolute;
-      font-size: 1.8rem;
+      font-size: 2rem;
       animation: floatUp linear infinite;
-      opacity: 0.7;
+      opacity: 0.75;
     }
 
     @keyframes floatUp {
       0%   { transform: translateY(100vh) rotate(0deg); }
-      100% { transform: translateY(-15vh) rotate(360deg); }
+      100% { transform: translateY(-20vh) rotate(720deg); }
     }
 
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.18); }
+      50%      { transform: scale(1.2); }
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-18px); }
+      50%      { transform: translateY(-20px); }
     }
 
-    @media (max-width: 500px) {
-      h1 { font-size: 2.9rem; }
-      button { font-size: 1.25rem; padding: 14px 36px; }
-      .buttons { gap: 30px; }
+    @media (max-width: 600px) {
+      h1          { font-size: 3.2rem; }
+      #yes        { font-size: 1.9rem; padding: 20px 60px; }
+      #no         { font-size: 1.3rem; padding: 14px 40px; }
+      .buttons    { gap: 50px; }
+      p           { font-size: 1.35rem; }
     }
   </style>
 </head>
@@ -154,9 +160,9 @@
   <h1>Hey beautiful <span class="heart-beat">❤️</span></h1>
   
   <p>I’ve been thinking about this way too much…<br>
-  and there’s only one person I want to spend Valentine’s with.</p>
+  and honestly, there’s only one person I want by my side this Valentine’s.</p>
 
-  <p style="font-size: 1.7rem; margin: 2rem 0 1.5rem;">
+  <p style="font-size: 1.9rem; margin: 2.2rem 0 2rem;">
     So…<br><strong>Will you be my Valentine?</strong>
   </p>
 
@@ -166,25 +172,25 @@
   </div>
 
   <div class="message" id="happyMessage">
-    YAYYYYY!!! 🎉❤️ I love you more than words can say!!
+    YAYYYYYY!!! 🎉❤️ I love you so so much!!
   </div>
 </div>
 
 <script>
-  // Floating hearts background
+  // Floating hearts
   function createHeart() {
     const heart = document.createElement('div');
     heart.className = 'heart';
     heart.innerHTML = ['❤️','💗','💓','💞','💘','💝'][Math.floor(Math.random()*6)];
     heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (Math.random() * 8 + 10) + 's';
-    heart.style.fontSize = (Math.random() * 1.2 + 1.1) + 'rem';
+    heart.style.animationDuration = (Math.random() * 9 + 11) + 's';
+    heart.style.fontSize = (Math.random() * 1.4 + 1.2) + 'rem';
     document.getElementById('hearts').appendChild(heart);
-    setTimeout(() => heart.remove(), 15000);
+    setTimeout(() => heart.remove(), 16000);
   }
-  setInterval(createHeart, 380);
+  setInterval(createHeart, 350);
 
-  // Button logic
+  // Logic
   const yesBtn = document.getElementById('yes');
   const noBtn = document.getElementById('no');
   const message = document.getElementById('happyMessage');
@@ -193,65 +199,63 @@
     message.classList.add('show');
     noBtn.style.display = 'none';
     yesBtn.innerHTML = 'You said YES! 🥰💕';
-    yesBtn.style.transform = 'scale(1.3)';
+    yesBtn.style.transform = 'scale(1.35)';
     yesBtn.disabled = true;
 
     // Heart explosion
-    for(let i = 0; i < 40; i++) {
-      setTimeout(createHeart, i * 60);
+    for(let i = 0; i < 50; i++) {
+      setTimeout(createHeart, i * 50);
     }
   });
 
-  // ────────────────────────────────────────────────
-  //     THE NO BUTTON ESCAPE GAME — super slippery
-  // ────────────────────────────────────────────────
-  let noButtonLocked = false;
+  // Slippery No button – moves OPPOSITE to cursor direction
+  let noLocked = false;
 
   function moveNoButton(e) {
-    if (noButtonLocked) return;
+    if (noLocked) return;
 
     const rect = noBtn.getBoundingClientRect();
-    const buttonCenterX = rect.left + rect.width / 2;
-    const buttonCenterY = rect.top + rect.height / 2;
+    const btnX = rect.left + rect.width / 2;
+    const btnY = rect.top + rect.height / 2;
 
-    const mouseX = e.clientX || (e.touches && e.touches[0].clientX);
-    const mouseY = e.clientY || (e.touches && e.touches[0].clientY);
+    const mouseX = e.clientX || (e.touches && e.touches[0]?.clientX);
+    const mouseY = e.clientY || (e.touches && e.touches[0]?.clientY);
 
-    const distance = Math.hypot(mouseX - buttonCenterX, mouseY - buttonCenterY);
+    if (!mouseX || !mouseY) return;
 
-    if (distance < 100) {  // trigger radius ~100px
-      const angle = Math.atan2(mouseY - buttonCenterY, mouseX - buttonCenterX);
-      const escapeDistance = 180 + Math.random() * 100; // 180–280px jump
+    const dist = Math.hypot(mouseX - btnX, mouseY - btnY);
 
-      let newX = buttonCenterX + Math.cos(angle + Math.PI) * escapeDistance;
-      let newY = buttonCenterY + Math.sin(angle + Math.PI) * escapeDistance;
+    if (dist < 110) {  // trigger when cursor gets within ~110px
+      const angle = Math.atan2(mouseY - btnY, mouseX - btnX);
+      const escapeDist = 200 + Math.random() * 120;  // bigger jumps for drama
 
-      // Keep inside viewport with margin
-      newX = Math.max(80, Math.min(window.innerWidth - 180, newX));
-      newY = Math.max(80, Math.min(window.innerHeight - 180, newY));
+      let newX = btnX + Math.cos(angle + Math.PI) * escapeDist;  // +π = opposite direction
+      let newY = btnY + Math.sin(angle + Math.PI) * escapeDist;
 
-      noBtn.style.left = newX - rect.width / 2 + 'px';
-      noBtn.style.top  = newY - rect.height / 2 + 'px';
+      // Clamp to screen with safe margin
+      newX = Math.max(100, Math.min(window.innerWidth - 200, newX));
+      newY = Math.max(100, Math.min(window.innerHeight - 200, newY));
+
+      noBtn.style.left = (newX - rect.width / 2) + 'px';
+      noBtn.style.top  = (newY - rect.height / 2) + 'px';
       noBtn.style.position = 'fixed';
 
-      // Tiny chance to "catch" it (for fun, very rare)
-      if (Math.random() < 0.007) {
-        noButtonLocked = true;
-        noBtn.innerHTML = "Okay fine... 😭";
+      // Very rare "catch" chance
+      if (Math.random() < 0.006) {
+        noLocked = true;
+        noBtn.innerHTML = "Okay… you win 😭";
         noBtn.style.background = '#e67e22';
         noBtn.style.color = 'white';
       }
     }
   }
 
-  // Track both mouse and touch
   document.addEventListener('mousemove', moveNoButton);
   document.addEventListener('touchmove', moveNoButton, { passive: true });
 
-  // If she somehow clicks it (dev tools / very fast finger), tease her
   noBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    alert("Heyyyy no cheating! 😭\nThe button doesn't want to be clicked… but I reaaaally want you to be my Valentine 🥺❤️");
+    alert("Nooo cheating allowed! 😭\nBut seriously… please be my Valentine? 🥺❤️");
   });
 </script>
 </body>
