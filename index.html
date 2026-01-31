@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>pls be my valentine i guess</title>
+  <title>Jyeshna pls wake up for 5 seconds</title>
   <style>
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #ffebee, #e1f5fe, #fffde7);
+      background: linear-gradient(135deg, #d1e7ff, #fff0f5, #e0ffe0);
       font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
       color: #333;
       overflow: hidden;
@@ -23,114 +23,111 @@
       padding: 20px;
     }
     h1 {
-      font-size: 7.5vw;
-      line-height: 1.05;
-      margin: 0 0 20px;
-      text-shadow: 3px 3px 0 #fff, 6px 6px 0 #ff69b4;
+      font-size: 7vw;
+      line-height: 1.1;
+      margin: 0 0 15px;
+      text-shadow: 3px 3px 0 #fff, 6px 6px 0 #ff9ecd;
       transform: rotate(-2deg);
-      animation: wobble 4s infinite ease-in-out;
+      animation: wobble 5s infinite ease-in-out;
     }
     @keyframes wobble {
       0%,100% { transform: rotate(-2deg); }
       50%     { transform: rotate(2deg); }
     }
-    .heart {
-      font-size: 10vw;
-      margin: 15px 0;
-      animation: pulse 2.5s infinite;
-      color: #ff4081;
+    .snooze {
+      font-size: 12vw;
+      margin: 10px 0 20px;
+      animation: snooze-float 6s infinite ease-in-out;
+      color: #ff80ab;
     }
-    @keyframes pulse {
-      0%,100% { transform: scale(1); }
-      50%     { transform: scale(1.15); }
+    @keyframes snooze-float {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50%     { transform: translateY(-20px) rotate(3deg); }
     }
     .btn-box {
       position: relative;
-      margin: 40px 0;
+      margin: 30px 0 40px;
     }
     button {
       font-size: 4.5vw;
-      padding: 20px 60px;
-      margin: 25px;
+      padding: 22px 65px;
+      margin: 20px;
       border: 5px solid #000;
       border-radius: 999px;
       font-weight: bold;
       cursor: pointer;
-      transition: all 0.25s;
-      box-shadow: 0 8px 0 #333;
+      transition: all 0.3s;
+      box-shadow: 0 8px 0 #444;
     }
     button:active {
       transform: translateY(4px);
-      box-shadow: 0 4px 0 #333;
+      box-shadow: 0 4px 0 #444;
     }
     .yes {
-      background: #ffeb3b;
-      color: #d500f9;
+      background: #a5d6a7;
+      color: #1b5e20;
     }
     .yes:hover {
-      background: #ffd600;
-      transform: scale(1.15) rotate(3deg);
-      box-shadow: 0 12px 0 #333;
+      background: #81c784;
+      transform: scale(1.12) rotate(4deg);
+      box-shadow: 0 12px 0 #444;
     }
     .no {
-      background: #90caf9;
-      color: #01579b;
+      background: #b0bec5;
+      color: #263238;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-    }
-    .sadboi {
-      font-size: 14vw;
-      margin: 20px 0 10px;
-      animation: bounce 3s infinite;
-    }
-    @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50%     { transform: translateY(-15px); }
+      top: 120px;
     }
     .tiny {
-      font-size: 3vw;
+      font-size: 3.2vw;
       margin-top: 30px;
-      opacity: 0.8;
+      opacity: 0.75;
       color: #555;
+      max-width: 80%;
+    }
+    .emoji-burst {
+      font-size: 6vw;
+      margin: 15px 0;
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="sadboi">🥺</div>
+  <div class="snooze">💤🥱💤</div>
   
-  <h1>hey... be my valentine?<br>or i'm gonna have to eat<br>both our shares of chocolate</h1>
+  <h1>Yo Jyeshna...<br>be my valentine?<br>or keep sleeping,<br>but then I'll have to<br>steal all your blankets forever 😈</h1>
   
-  <div class="heart">💖</div>
+  <div class="emoji-burst">🛌🍫😴</div>
   
   <div class="btn-box">
     <button class="yes"
-      onclick="alert('yay!!! you said yes... i was lowkey scared you\'d pick the chocolate over me 😭💕'); 
-               document.body.innerHTML = '<div style=\"font-size:18vw;margin-top:30vh;\">YOU\'RE STUCK WITH ME NOW 🥰</div><div style=\"font-size:6vw;color:#ff4081;\">best decision of the year tbh</div>';">
-      YES (i kinda like you too)
+      onclick="alert('YESS! Jyeshna said yes while half-asleep... legendary. Now officially allowed to cuddle-bug you during naps 💕'); 
+               document.body.innerHTML = '<div style=\"font-size:17vw;margin-top:28vh;\">JYESHNA IS OFFICIALLY MINE 🥰💤</div><div style=\"font-size:5vw;color:#ff80ab;\">naptime duo activated. no escaping.</div>';">
+      YES (but only if naps are included)
     </button>
     
     <button class="no" id="nope"
-      onmouseover="this.style.left = (Math.random()*80 + 10) + 'vw'; this.style.top = (Math.random()*60 + 20) + 'vh';">
-      no thanks i'm busy
+      onmouseover="this.style.left = (Math.random()*70 + 15) + 'vw'; this.style.top = (Math.random()*50 + 30) + 'vh';">
+      nah too lazy to date
     </button>
   </div>
   
-  <div class="tiny">(fine you can have the last slice of pizza too... just say yes pls)</div>
+  <div class="tiny">(fine... I'll even set like 12 alarms so you can hit snooze on me too. pls say yes I'm begging while you're probably still in bed rn)</div>
 </div>
 
 <script>
-  // make the "no" button slowly drift away over time
+  // no button gets sleepier and drifts away slower
   setInterval(() => {
     const nope = document.getElementById('nope');
     if (!nope) return;
-    let currentLeft = parseFloat(nope.style.left) || 50;
-    let currentTop  = parseFloat(nope.style.top)  || 50;
-    nope.style.left = (currentLeft + (Math.random()-0.5)*8) + 'vw';
-    nope.style.top  = (currentTop  + (Math.random()-0.5)*6) + 'vh';
-  }, 1200);
+    let curLeft = parseFloat(nope.style.left) || 50;
+    let curTop  = parseFloat(nope.style.top)  || 50;
+    nope.style.left = (curLeft + (Math.random()-0.5)*4) + 'vw';
+    nope.style.top  = (curTop  + (Math.random()-0.5)*3) + 'vh';
+  }, 1800);
 </script>
 
 </body>
