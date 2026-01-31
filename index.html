@@ -1,289 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Will you be my Valentine? ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      font-family: system-ui, -apple-system, sans-serif;
-      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-      color: #222;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .card {
-      text-align: center;
-      padding: 50px 40px;
-      max-width: 90%;
-      width: 600px;
-      background: rgba(255, 255, 255, 0.975);
-      border-radius: 42px;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.25);
-      backdrop-filter: blur(14px);
-      position: relative;
-      overflow: hidden;
-      animation: float 8s ease-in-out infinite;
-    }
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-    h1 {
-      font-size: 4.4rem;
-      margin: 0.1em 0 0.4em;
-      color: #e63946;
-    }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .heartbeat {
-      display: inline-block;
-      animation: pulse 1.3s infinite;
-    }
+        h1 {
+            color: #e91e63;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
 
-    .intro {
-      font-size: 1.6rem;
-      line-height: 1.6;
-      margin: 0.6em 0 1.6em;
-      color: #333;
-    }
+        .question {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
 
-    .question {
-      font-size: 2.2rem;
-      font-weight: bold;
-      margin: 2rem 0 2.5rem;
-      color: #1d3557;
-    }
+        .gif-container {
+            margin: 2rem 0;
+        }
 
-    .button-area {
-      position: relative;
-      height: 110px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 1.5rem 0 3rem;
-    }
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
 
-    button {
-      font-weight: bold;
-      border: none;
-      border-radius: 999px;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.16);
-      user-select: none;
-    }
+        .button-container {
+            position: relative;
+            height: 80px;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    #yes {
-      font-size: 2.6rem;
-      padding: 26px 120px;
-      background: #e63946;
-      color: white;
-      z-index: 5;
-    }
+        button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
 
-    #yes:hover {
-      background: #b32d38;
-      transform: scale(1.09);
-    }
+        #yesBtn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            z-index: 5;
+        }
 
-    #no {
-      font-size: 1.15rem;
-      padding: 10px 32px;
-      background: #f1faee;
-      color: #457b9d;
-      position: absolute;
-      pointer-events: none;
-      transition: left 0.22s ease-out, top 0.22s ease-out, transform 0.18s;
-      box-shadow: 0 5px 16px rgba(0,0,0,0.15);
-      white-space: nowrap;
-      border: 1px solid #a8dadc;
-    }
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
 
-    .success {
-      font-size: 2.8rem;
-      margin-top: 2.5rem;
-      color: #2a9d8f;
-      font-weight: bold;
-      opacity: 0;
-      transform: translateY(45px);
-      transition: all 1.1s ease;
-    }
+        #noBtn {
+            background: linear-gradient(135deg, #a8a8a8 0%, #7f7f7f 100%);
+            color: white;
+            position: absolute;
+            pointer-events: none;           /* prevents normal hover/click */
+            transition: left 0.25s ease-out, top 0.25s ease-out;
+            white-space: nowrap;
+        }
 
-    .success.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .celebration {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
 
-    .hearts-bg {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
+        .celebration h2 {
+            color: #e91e63;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
 
-    .heart {
-      position: absolute;
-      font-size: 2.4rem;
-      animation: rise linear infinite;
-      opacity: 0.8;
-    }
+        .celebration p {
+            font-size: 1.2rem;
+            color: #666;
+        }
 
-    @keyframes rise {
-      0%   { transform: translateY(130%) rotate(0deg); }
-      100% { transform: translateY(-60%) rotate(1800deg); }
-    }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.25); }
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-20px); }
-    }
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 999;
+        }
 
-    @media (max-width: 620px) {
-      .card       { padding: 45px 30px; width: 94%; }
-      h1          { font-size: 3.6rem; }
-      #yes        { font-size: 2.2rem; padding: 22px 90px; }
-      #no         { font-size: 1.05rem; padding: 9px 28px; }
-      .question   { font-size: 1.9rem; }
-    }
-  </style>
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: fall 4s linear;
+            opacity: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                opacity: 1;
+                top: -10%;
+            }
+            100% {
+                opacity: 0;
+                top: 110%;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <div id="question-section">
+            <h1>💕 Hey Beautiful! 💕</h1>
+            <p class="question">Will you be my Valentine?</p>
+            
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHEzZzBnN2Q2Y3FqY3F5dGJkdDJ6M3JnZmE2dGJjdHN6ZGNxYzR6ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="Cute puppy">
+            </div>
+            
+            <div class="button-container">
+                <button id="yesBtn">Yes! 💖</button>
+                <button id="noBtn">No 😭</button>
+            </div>
+        </div>
 
-<div class="hearts-bg" id="hearts"></div>
+        <div class="celebration" id="celebration">
+            <h2>🎉 Yaaaay! 🎉</h2>
+            <p>I knew you'd say yes! ❤️</p>
+            <p style="margin-top: 1rem;">You just made me the happiest person ever! 💕</p>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGJxMTRvY2Z0ajhxMWMyaDNjOHlhbWZsbWhud3o2aWF6OGhpNmxuZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UVk5yzljef0kGiayL1/giphy.gif" alt="Celebration">
+            </div>
+        </div>
+    </div>
 
-<div class="card">
-  <h1>Hey cutie <span class="heartbeat">❤️</span></h1>
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const questionSection = document.getElementById('question-section');
+        const celebration = document.getElementById('celebration');
+        const container = document.querySelector('.container');
 
-  <div class="intro">
-    I've been overthinking this for weeks…<br>
-    and I really don't want to do Valentine's with anyone else.
-  </div>
+        let isCaught = false;
 
-  <div class="question">Will you be my Valentine? 🥺</div>
+        // Keep No button inside the white card
+        function clampPosition(x, y) {
+            const contRect = container.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+            const padding = 30;
 
-  <div class="button-area">
-    <button id="yes">Yes!! 💖</button>
-    <button id="no">No 😭</button>
-  </div>
+            const minX = padding;
+            const maxX = contRect.width - btnRect.width - padding;
+            const minY = padding;
+            const maxY = contRect.height - btnRect.height - padding;
 
-  <div class="success" id="successMsg">
-    YASSSSS!!! 🎉❤️ You're stuck with me forever now 😘
-  </div>
-</div>
+            return {
+                x: Math.max(minX, Math.min(maxX, x)),
+                y: Math.max(minY, Math.min(maxY, y))
+            };
+        }
 
-<script>
-  // Hearts go brrr
-  function spawnHeart() {
-    const h = document.createElement('div');
-    h.className = 'heart';
-    h.textContent = ['❤️','💗','💓','💞','💘','💝','🫶','✨'][Math.floor(Math.random()*8)];
-    h.style.left = Math.random() * 100 + 'vw';
-    h.style.animationDuration = (Math.random() * 9 + 10) + 's';
-    h.style.fontSize = (Math.random() * 1.5 + 1.5) + 'rem';
-    document.getElementById('hearts').appendChild(h);
-    setTimeout(() => h.remove(), 22000);
-  }
-  setInterval(spawnHeart, 280);
+        // Escape logic: moves AWAY from cursor
+        function evade(e) {
+            if (isCaught) return;
 
-  const yesBtn   = document.getElementById('yes');
-  const noBtn    = document.getElementById('no');
-  const success  = document.getElementById('successMsg');
-  const card     = document.querySelector('.card');
+            const btnRect = noBtn.getBoundingClientRect();
+            const centerX = btnRect.left + btnRect.width / 2;
+            const centerY = btnRect.top + btnRect.height / 2;
 
-  yesBtn.addEventListener('click', () => {
-    success.classList.add('show');
-    noBtn.style.display = 'none';
-    yesBtn.textContent = 'She said YES!!! 🥹💕';
-    yesBtn.style.transform = 'scale(1.35)';
-    yesBtn.disabled = true;
+            const mouseX = e.clientX || (e.touches && e.touches[0]?.clientX) || 0;
+            const mouseY = e.clientY || (e.touches && e.touches[0]?.clientY) || 0;
 
-    for(let i = 0; i < 80; i++) setTimeout(spawnHeart, i * 45);
-  });
+            if (mouseX === 0 && mouseY === 0) return;
 
-  let noLocked = false;
-  let panicLevel = 0;
+            const distance = Math.hypot(mouseX - centerX, mouseY - centerY);
 
-  function clamp(x, y) {
-    const b = card.getBoundingClientRect();
-    const n = noBtn.getBoundingClientRect();
-    const p = 45;
-    return {
-      x: Math.max(p, Math.min(b.width - n.width - p, x)),
-      y: Math.max(p, Math.min(b.height - n.height - p, y))
-    };
-  }
+            if (distance < 110) {
+                const angle = Math.atan2(mouseY - centerY, mouseX - centerX);
+                const jump = 60 + Math.random() * 50;
 
-  function freakOut(e) {
-    if (noLocked) return;
+                let newX = (centerX - container.getBoundingClientRect().left) + Math.cos(angle + Math.PI) * jump;
+                let newY = (centerY - container.getBoundingClientRect().top) + Math.sin(angle + Math.PI) * jump;
 
-    const nr = noBtn.getBoundingClientRect();
-    const cx = nr.left + nr.width / 2;
-    const cy = nr.top  + nr.height / 2;
+                const clamped = clampPosition(newX - btnRect.width / 2, newY - btnRect.height / 2);
 
-    const mx = e.clientX || (e.touches?.[0]?.clientX ?? 0);
-    const my = e.clientY || (e.touches?.[0]?.clientY ?? 0);
+                noBtn.style.left = clamped.x + 'px';
+                noBtn.style.top = clamped.y + 'px';
 
-    if (!mx || !my) return;
+                // Tiny funny surrender chance
+                if (Math.random() < 0.004) {
+                    isCaught = true;
+                    noBtn.textContent = "Okay fine... 😭";
+                    noBtn.style.background = 'linear-gradient(135deg, #ff6b6b, #ff8e53)';
+                }
+            }
+        }
 
-    const d = Math.hypot(mx - cx, my - cy);
+        // Listen for mouse & touch movement
+        document.addEventListener('mousemove', evade);
+        document.addEventListener('touchmove', evade, { passive: true });
 
-    if (d < 140) {  // runs away BEFORE you can hover
-      panicLevel = Math.min(panicLevel + 1, 5);
-      const angle = Math.atan2(my - cy, mx - cx);
-      const jump = 60 + Math.random() * 50 + panicLevel * 15; // gets more dramatic
+        // Position No next to Yes on load
+        window.addEventListener('load', () => {
+            const yesRect = yesBtn.getBoundingClientRect();
+            const contRect = container.getBoundingClientRect();
 
-      let nx = (cx - card.getBoundingClientRect().left) + Math.cos(angle + Math.PI) * jump;
-      let ny = (cy - card.getBoundingClientRect().top)  + Math.sin(angle + Math.PI) * jump;
+            let startX = (yesRect.left - contRect.left) + yesRect.width + 30 + Math.random() * 30;
+            let startY = (yesRect.top - contRect.top) + (yesRect.height - noBtn.offsetHeight) / 2;
 
-      const pos = clamp(nx - nr.width / 2, ny - nr.height / 2);
+            const pos = clampPosition(startX, startY);
+            noBtn.style.left = pos.x + 'px';
+            noBtn.style.top = pos.y + 'px';
+        });
 
-      noBtn.style.left = pos.x + 'px';
-      noBtn.style.top  = pos.y + 'px';
-      noBtn.style.transform = `scale(${1 + panicLevel * 0.08}) rotate(${Math.random()*10 - 5}deg)`;
+        // Safety click handler
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("Hey! That's cheating 😤\nBe my Valentine pleeease? 🥺💕");
+        });
 
-      if (Math.random() < 0.003) {
-        noLocked = true;
-        noBtn.textContent = "OK FINE YOU WIN 😭💦";
-        noBtn.style.background = '#f4a261';
-        noBtn.style.color = 'white';
-        noBtn.style.border = '2px solid #e76f51';
-      }
-    } else {
-      panicLevel = Math.max(0, panicLevel - 1);
-    }
-  }
+        // Yes celebration
+        yesBtn.addEventListener('click', () => {
+            questionSection.style.display = 'none';
+            celebration.style.display = 'block';
+            createHearts();
+        });
 
-  document.addEventListener('mousemove', freakOut);
-  document.addEventListener('touchmove', freakOut, { passive: true });
-
-  // Start glued next to Yes
-  window.addEventListener('load', () => {
-    const yr = yesBtn.getBoundingClientRect();
-    const cr = card.getBoundingClientRect();
-    const nr = noBtn.getBoundingClientRect();
-
-    let sx = (yr.left - cr.left) + yr.width + 20 + Math.random() * 30;
-    let sy = (yr.top - cr.top) + (yr.height - nr.height) / 2;
-
-    const pos = clamp(sx, sy);
-    noBtn.style.left = pos.x + 'px';
-    noBtn.style.top  = pos.y + 'px';
-
-    // Funny initial text
-    setTimeout(() => {
-      if (!noLocked) noBtn.textContent = "Catch me if you can 😏";
-    }, 1200);
-  });
-
-  noBtn.addEventListener('click', e => {
-    e.preventDefault();
-    alert("Bruh you used hacks didn't you 😭\nStill wanna be my Valentine tho? 🥺");
-  });
-</script>
+        // Falling hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const heartSymbols = ['❤️', '💕', '💖', '💗', '💝', '💘'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 200);
+            }
+        }
+    </script>
 </body>
 </html>
